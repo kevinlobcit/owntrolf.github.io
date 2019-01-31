@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="javascript.js"></script>
+
+
+</head>
+<body>
+<a href="user.html">to user</a>
+<div id="question">
+    <p>Question Text*</p>
+    <textarea id="questiontext" value="Hello"></textarea>
+    <p>Answers</p>
+    <input type="radio" name="selection" id="radio1" value="1"><input type="text" id="choice1">
+    <br/>
+    <input type="radio" name="selection" id="radio2" value="2"><input type="text" id="choice2">
+    <br/>
+    <input type="radio" name="selection" id="radio3" value="3"><input type="text" id="choice3">
+    <br/>
+    <input type="radio" name="selection" id="radio4" value="4"><input type="text" id="choice4">
+    <br/>
+    <button onclick=storeQuiz()>Add</button>
+    <br/>
+    <input type="number" id="num" min="1" value="1"/>
+    <button onclick=removeQuestion()>Remove</button>
+    <button onclick=editQuestion()>Edit</button>
+    <br/>
+    <div id="message"></div>
+</div>
+<script>
+    document.getElementById("num").max=getQuizSize();
+    let array = localStorage.getItem("quiz")
+    
+    document.write(array);
+
+</script>
+
+</body>
+</html>
