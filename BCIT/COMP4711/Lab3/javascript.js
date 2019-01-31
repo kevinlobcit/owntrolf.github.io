@@ -80,7 +80,7 @@ function createJSON() {
     let c2 = document.getElementById("choice2").value;
     let c3 = document.getElementById("choice3").value;
     let c4 = document.getElementById("choice4").value;
-    let answr = 0;
+    let answr = 1;
     
     
     if(document.getElementById("radio1").checked==true){

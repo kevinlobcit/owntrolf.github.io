@@ -69,13 +69,30 @@ function highlightCorrect(qNum)
     }
 }
 
+
+
 function highlight(qNum, i, sValue)
 {
+    let incorrectDiv = document.getElementById(qNum + "r" + (sValue));
+    incorrectDiv.style.backgroundColor = "olive";
     let correct = data[i].answer;
     let correctDiv = document.getElementById(qNum + "r" + (correct));
     correctDiv.style.backgroundColor = "yellow";
-    let incorrectDiv = document.getElementById(qNum + "r" + (sValue));
-    incorrectDiv.style.backgroundColor = "olive";
+    
+}
+
+//For the case nothing is selected but it is the correct anwer (1)
+function checkForUnselected(qNum, i)
+{
+    let radioButtons = document.getElementsByName(qNum);
+    let sRadio;
+    for(let radio = 0; radio < 4; radio++)
+    {
+        if(radioButtons[radio].checked) {
+            return true;
+        }
+    }
+    return false;
 }
 
 function checkQuiz()
@@ -87,7 +104,7 @@ function checkQuiz()
         let sValue = getSelectedValue(qNum, i);
         let text = qNum + " false";
         
-        if(data[i].answer == sValue && document.getElementsByName(qNum)[sValue].checked)
+        if(data[i].answer == sValue && checkForUnselected(qNum,i))
         {
             highlightCorrect(qNum);
             text = qNum + " true";
@@ -97,6 +114,8 @@ function checkQuiz()
         {
             highlight(qNum, i, sValue);
         }
+        
+        
         
         let textNode = document.createTextNode(text);
         document.getElementById("results").appendChild(textNode);
